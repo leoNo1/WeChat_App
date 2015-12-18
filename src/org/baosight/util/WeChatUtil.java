@@ -59,7 +59,7 @@ public class WeChatUtil {
     public static String getUsage() {  
         StringBuffer buffer = new StringBuffer();  
         buffer.append("歌曲点播操作指南").append("\n\n");  
-        buffer.append("回复：歌曲+歌名").append("\n");  
+        buffer.append("回复：歌曲歌名").append("\n");  
         buffer.append("例如：歌曲小苹果").append("\n");  
         buffer.append("或者：歌曲小苹果@筷子兄弟").append("\n\n");  
          

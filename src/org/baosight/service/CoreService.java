@@ -39,32 +39,25 @@ public class CoreService {
 			// 消息类型
 			String msgType = requestMap.get("MsgType");
 
-			
-			 textMessage.setToUserName(fromUserName);
-			 textMessage.setFromUserName(toUserName);
-			 textMessage.setCreateTime(new Date().getTime());
-			 textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
-			 textMessage.setFuncFlag(0);
-		
+			textMessage.setToUserName(fromUserName);
+			textMessage.setFromUserName(toUserName);
+			textMessage.setCreateTime(new Date().getTime());
+			textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
+			textMessage.setFuncFlag(0);
 
 			// 文本消息
 			if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {
 				String content = requestMap.get("Content");
-
-				// 判断用户发送的是否是单个QQ表情
-				if (WeChatUtil.isQqFace(content)) {
-					// 用户发什么QQ表情，就返回什么QQ表情
-					String respContent = content;
-				
-					textMessage.setContent(respContent);
-					respXML = MessageUtil.textMessageToXml(textMessage);
-				} else if (content.startsWith("歌曲")) {
+				if (content.startsWith("歌曲")) {
 					// 如果以“歌曲”2个字开头
 					// 将歌曲2个字及歌曲后面的+、空格、-等特殊符号去掉
 					String keyWord = content.replaceAll("^歌曲[\\+ ~!@#%^-_=]?", "");
 					// 如果歌曲名称为空
 					if ("".equals(keyWord)) {
 						String respContent = WeChatUtil.getUsage();
+
+						textMessage.setContent(respContent);
+						respXML = MessageUtil.textMessageToXml(textMessage);
 					} else {
 						String[] kwArr = keyWord.split("@");
 						// 歌曲名称
@@ -79,6 +72,9 @@ public class CoreService {
 						// 未搜索到音乐
 						if (null == music) {
 							String respContent = "对不起，没有找到你想听的歌曲<" + musicTitle + ">";
+
+							textMessage.setContent(respContent);
+							respXML = MessageUtil.textMessageToXml(textMessage);
 						} else {
 							// 音乐消息
 							MusicMessage musicMessage = new MusicMessage();
@@ -93,37 +89,37 @@ public class CoreService {
 
 				}
 
-				else {
-					// 创建图文消息
-					NewsMessage newsMessage = new NewsMessage();
-					newsMessage.setToUserName(fromUserName);
-					newsMessage.setFromUserName(toUserName);
-					newsMessage.setCreateTime(new Date().getTime());
-					newsMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_NEWS);
-					newsMessage.setFuncFlag(0);
-
-					List<Article> articleList = new ArrayList<Article>();
-
-					Article article1 = new Article();
-					article1.setTitle("为啥掏鸟判10年\n贪官判12年");
-					article1.setDescription("");
-					article1.setPicUrl("http://wechatapplication1.sinaapp.com/images/tn.png");
-					article1.setUrl("http://view.163.com/special/resound/wildlife20151209.html");
-
-					Article article2 = new Article();
-					article2.setTitle("网易考拉海购");
-					article2.setDescription("");
-					article2.setPicUrl("http://wechatapplication1.sinaapp.com/images/tg.png");
-					article2.setUrl("http://www.kaola.com");
-
-					articleList.add(article1);
-					articleList.add(article2);
-
-					newsMessage.setArticleCount(articleList.size());
-					newsMessage.setArticles(articleList);
-					respXML = MessageUtil.newsMessageToXml(newsMessage);
-
-				}
+//				else {
+//					// 创建图文消息
+//					NewsMessage newsMessage = new NewsMessage();
+//					newsMessage.setToUserName(fromUserName);
+//					newsMessage.setFromUserName(toUserName);
+//					newsMessage.setCreateTime(new Date().getTime());
+//					newsMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_NEWS);
+//					newsMessage.setFuncFlag(0);
+//
+//					List<Article> articleList = new ArrayList<Article>();
+//
+//					Article article1 = new Article();
+//					article1.setTitle("为啥掏鸟判10年\n贪官判12年");
+//					article1.setDescription("");
+//					article1.setPicUrl("http://wechatapplication1.sinaapp.com/images/tn.png");
+//					article1.setUrl("http://view.163.com/special/resound/wildlife20151209.html");
+//
+//					Article article2 = new Article();
+//					article2.setTitle("网易考拉海购");
+//					article2.setDescription("");
+//					article2.setPicUrl("http://wechatapplication1.sinaapp.com/images/tg.png");
+//					article2.setUrl("http://www.kaola.com");
+//
+//					articleList.add(article1);
+//					articleList.add(article2);
+//
+//					newsMessage.setArticleCount(articleList.size());
+//					newsMessage.setArticles(articleList);
+//					respXML = MessageUtil.newsMessageToXml(newsMessage);
+//
+//				}
 
 			}
 			// 图片消息
@@ -141,8 +137,7 @@ public class CoreService {
 			// 音频消息
 			else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_VOICE)) {
 				String respContent = "您发送的是音频消息！";
-			}
-			else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_VIDEO)) {
+			} else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_VIDEO)) {
 				String respContent = "您发送的是shi频消息！";
 			}
 			// 事件推送
@@ -152,9 +147,9 @@ public class CoreService {
 				// 订阅
 				if (eventType.equals(MessageUtil.EVENT_TYPE_SUBSCRIBE)) {
 
-					String respContent = "谢谢您关注哥!\n这是哥刚刚收购的企业，以后还请多多关照" + "[憨笑]" + "\n"
-							+ "\ue40a<a href=\"http://toutiao.com/\">今日头牌</a>";
-				
+					String respContent = "感谢您的关注!" + "[憨笑]" + "\n"
+							+ "\ue40a<a href=\"http://toutiao.com/\">今日新闻</a>";
+
 					textMessage.setContent(respContent);
 					respXML = MessageUtil.textMessageToXml(textMessage);
 
@@ -171,7 +166,7 @@ public class CoreService {
 					if (eventKey.equals("11")) {
 						String respContent = "天气预报菜单项被点击！";
 					} else if (eventKey.equals("12")) {
-						String respContent= "公交查询菜单项被点击！";
+						String respContent = "公交查询菜单项被点击！";
 					} else if (eventKey.equals("13")) {
 						String respContent = "周边搜索菜单项被点击！";
 					} else if (eventKey.equals("14")) {
@@ -179,7 +174,7 @@ public class CoreService {
 					} else if (eventKey.equals("21")) {
 
 						String respContent = WeChatUtil.getUsage();
-				
+
 						textMessage.setContent(respContent);
 						respXML = MessageUtil.textMessageToXml(textMessage);
 					} else if (eventKey.equals("22")) {

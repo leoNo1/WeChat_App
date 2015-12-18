@@ -47,7 +47,7 @@ public class BaiduMusicService {
 			if (!"".equals(musicAuthor))
 				music.setDescription(musicAuthor);
 			else
-				music.setDescription("来自百度音乐");
+				music.setDescription("Music点播");
 		}
 		return music;
 	}
