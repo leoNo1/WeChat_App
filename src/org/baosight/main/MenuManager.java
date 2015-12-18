@@ -58,7 +58,7 @@ public class MenuManager {
 		btn12.setUrl("http://60.12.175.34:8080/TrafficIndexWeb/indexroad.jsp");
 
 		CommonButton btn13 = new CommonButton();
-		btn13.setName("周边搜索");
+		btn13.setName("天气预报");
 		btn13.setType("click");
 		btn13.setKey("13");
 
@@ -78,10 +78,7 @@ public class MenuManager {
 		btn31.setType("click");
 		btn31.setKey("31");
 
-		CommonButton btn32 = new CommonButton();
-		btn32.setName("天气预报");
-		btn32.setType("click");
-		btn32.setKey("32");
+	
 
 		ComplexButton mainBtn1 = new ComplexButton();
 		mainBtn1.setName("业务大厅");
@@ -91,9 +88,9 @@ public class MenuManager {
 		mainBtn2.setName("休闲娱乐");
 		mainBtn2.setSub_button(new Button[] { btn21, btn22 });
 
-		ComplexButton mainBtn3 = new ComplexButton();
-		mainBtn3.setName("更多体验");
-		mainBtn3.setSub_button(new Button[] { btn31, btn32 });
+//		ComplexButton mainBtn3 = new ComplexButton();
+//		mainBtn3.setName("更多体验");
+//		mainBtn3.setSub_button(new Button[] { btn31});
 
 		/**
 		 * 每个一级菜单都有二级菜单项<br>
@@ -103,7 +100,7 @@ public class MenuManager {
 		 * menu.setButton(new Button[] { mainBtn1, mainBtn2, btn33 });
 		 */
 		Menu menu = new Menu();
-		menu.setButton(new Button[] { mainBtn1, mainBtn2, mainBtn3 });
+		menu.setButton(new Button[] { mainBtn1, mainBtn2, btn31 });
 
 		return menu;
 	}

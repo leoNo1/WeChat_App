@@ -23,7 +23,7 @@ import net.sf.json.JSONObject;
 public class CommonUtil {
 	private static Logger log = LoggerFactory.getLogger(CommonUtil.class);
 
-	public static String PROJECT_ROOT = "";
+	public static String PROJECT_ROOT = "http://wechatapplication1.sinaapp.com/images/weather/";
 	/** 处理https GET/POST 请求 */
 	public static String httpsRequest(String requestUrl, String requestMethod, String outputStr) {
 		StringBuffer buffer = new StringBuffer();

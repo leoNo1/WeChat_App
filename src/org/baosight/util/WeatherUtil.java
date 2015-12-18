@@ -77,18 +77,18 @@ public class WeatherUtil {
 			+weatherData.getWeather()+" "+weatherData.getWind());
 	article.setDescription("");
 	article.setPicUrl(CommonUtil.PROJECT_ROOT+"top.jpg");
-	article.setUrl("");
+	article.setUrl("http://www.wls96121.com/");
 	articleList.add(article);
 	
 	weather_Data.remove(0);//移除当天的天气
 	//遍历未来3天的天气
 	for(WeatherData data:weather_Data){
 		article = new Article();
-		article.setTitle(weatherData.getDate()+" "+weatherData.getTemperature()+" "
-				+weatherData.getWeather()+" "+weatherData.getWind());
+		article.setTitle(data.getDate()+" "+data.getTemperature()+" "
+				+data.getWeather()+" "+data.getWind());
 		article.setDescription("");
-		article.setPicUrl(CommonUtil.PROJECT_ROOT+getWeatherPic(weatherData.getDayPictureUrl()));
-		article.setUrl("");
+		article.setPicUrl(CommonUtil.PROJECT_ROOT+getWeatherPic(data.getDayPictureUrl()));
+		article.setUrl("http://www.wls96121.com/");
 		articleList.add(article);
 	}
 	

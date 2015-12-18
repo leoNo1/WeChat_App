@@ -14,6 +14,7 @@ import org.baosight.message.resp.NewsMessage;
 import org.baosight.message.resp.TextMessage;
 import org.baosight.util.MessageUtil;
 import org.baosight.util.WeChatUtil;
+import org.baosight.util.WeatherUtil;
 
 /**
  * 核心服务类
@@ -168,7 +169,20 @@ public class CoreService {
 					} else if (eventKey.equals("12")) {
 						String respContent = "公交查询菜单项被点击！";
 					} else if (eventKey.equals("13")) {
-						String respContent = "周边搜索菜单项被点击！";
+						NewsMessage newsMessage = new NewsMessage();
+						newsMessage.setToUserName(fromUserName);
+						newsMessage.setFromUserName(toUserName);
+						newsMessage.setCreateTime(new Date().getTime());
+						newsMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_NEWS);
+						newsMessage.setFuncFlag(0);
+	
+						List<Article> articleList = WeatherUtil.queryWeatherList("上海");
+						newsMessage.setArticleCount(articleList.size());
+						newsMessage.setArticles(articleList);
+						respXML = MessageUtil.newsMessageToXml(newsMessage);
+						
+						
+											
 					} else if (eventKey.equals("14")) {
 						String respContent = "历史上的今天菜单项被点击！";
 					} else if (eventKey.equals("21")) {
