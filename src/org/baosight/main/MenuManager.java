@@ -7,6 +7,7 @@ import org.baosight.pojo.ComplexButton;
 import org.baosight.pojo.Menu;
 import org.baosight.pojo.ViewButton;
 import org.baosight.util.CommonUtil;
+import org.baosight.util.ConfigUtil;
 import org.baosight.util.WeixinUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,13 +22,9 @@ public class MenuManager {
 	private static Logger log = LoggerFactory.getLogger(MenuManager.class);
 
 	public static void main(String[] args) {
-		// 第三方用户唯一凭证
-		String appId = "wxc57af3aca3de0e4e";
-		// 第三方用户唯一凭证密钥
-		String appSecret = "3c50403d77e8a3774015a6da587674bf";
 
 		// 调用接口获取access_token
-		AccessToken at = WeixinUtil.getAccessToken(appId, appSecret);
+		AccessToken at = WeixinUtil.getAccessToken(ConfigUtil.APPID, ConfigUtil.APPSECRET);
 
 		if (null != at) {
 			// 调用接口创建菜单
@@ -67,18 +64,15 @@ public class MenuManager {
 		btn21.setType("click");
 		btn21.setKey("21");
 
-		CommonButton btn22 = new CommonButton();
-		btn22.setName("经典游戏");
-		btn22.setType("click");
-		btn22.setKey("22");
-
+//		CommonButton btn22 = new CommonButton();
+//		btn22.setName("经典游戏");
+//		btn22.setType("click");
+//		btn22.setKey("22");
 
 		CommonButton btn31 = new CommonButton();
 		btn31.setName("朋友圈");
 		btn31.setType("click");
 		btn31.setKey("31");
-
-	
 
 		ComplexButton mainBtn1 = new ComplexButton();
 		mainBtn1.setName("业务大厅");
@@ -86,11 +80,11 @@ public class MenuManager {
 
 		ComplexButton mainBtn2 = new ComplexButton();
 		mainBtn2.setName("休闲娱乐");
-		mainBtn2.setSub_button(new Button[] { btn21, btn22 });
+		mainBtn2.setSub_button(new Button[] { btn21});
 
-//		ComplexButton mainBtn3 = new ComplexButton();
-//		mainBtn3.setName("更多体验");
-//		mainBtn3.setSub_button(new Button[] { btn31});
+		// ComplexButton mainBtn3 = new ComplexButton();
+		// mainBtn3.setName("更多体验");
+		// mainBtn3.setSub_button(new Button[] { btn31});
 
 		/**
 		 * 每个一级菜单都有二级菜单项<br>

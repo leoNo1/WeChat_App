@@ -107,7 +107,7 @@ public class MessageUtil {
 	public static WXBizMsgCrypt getWXBizMsgCrypt(){
 	WXBizMsgCrypt pc = null;
 	try {
-		pc = new WXBizMsgCrypt(SignUtil.token, "GTdhtg2RQy9VXOQaGpTqA85jkm9VvLJBzarMv6Tp5Oh", "wxc57af3aca3de0e4e");
+		pc = new WXBizMsgCrypt(ConfigUtil.TOKEN,ConfigUtil.EncodingAesKey, ConfigUtil.APPID);
 	} catch (AesException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

@@ -90,37 +90,7 @@ public class CoreService {
 
 				}
 
-//				else {
-//					// 创建图文消息
-//					NewsMessage newsMessage = new NewsMessage();
-//					newsMessage.setToUserName(fromUserName);
-//					newsMessage.setFromUserName(toUserName);
-//					newsMessage.setCreateTime(new Date().getTime());
-//					newsMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_NEWS);
-//					newsMessage.setFuncFlag(0);
-//
-//					List<Article> articleList = new ArrayList<Article>();
-//
-//					Article article1 = new Article();
-//					article1.setTitle("为啥掏鸟判10年\n贪官判12年");
-//					article1.setDescription("");
-//					article1.setPicUrl("http://wechatapplication1.sinaapp.com/images/tn.png");
-//					article1.setUrl("http://view.163.com/special/resound/wildlife20151209.html");
-//
-//					Article article2 = new Article();
-//					article2.setTitle("网易考拉海购");
-//					article2.setDescription("");
-//					article2.setPicUrl("http://wechatapplication1.sinaapp.com/images/tg.png");
-//					article2.setUrl("http://www.kaola.com");
-//
-//					articleList.add(article1);
-//					articleList.add(article2);
-//
-//					newsMessage.setArticleCount(articleList.size());
-//					newsMessage.setArticles(articleList);
-//					respXML = MessageUtil.newsMessageToXml(newsMessage);
-//
-//				}
+
 
 			}
 			// 图片消息
@@ -148,8 +118,8 @@ public class CoreService {
 				// 订阅
 				if (eventType.equals(MessageUtil.EVENT_TYPE_SUBSCRIBE)) {
 
-					String respContent = "感谢您的关注!" + "[憨笑]" + "\n"
-							+ "\ue40a<a href=\"http://toutiao.com/\">今日新闻</a>";
+					String respContent = "\ue40a本公众号正在持续开发并更新中，感谢您的关注!" + "[憨笑]" + "\n"
+							+ "<a href=\"http://toutiao.com/\">今日新闻</a>";
 
 					textMessage.setContent(respContent);
 					respXML = MessageUtil.textMessageToXml(textMessage);

@@ -76,7 +76,7 @@ public class WeatherUtil {
 	article.setTitle(currentCity+" "+weatherData.getDate()+" "
 			+weatherData.getWeather()+" "+weatherData.getWind());
 	article.setDescription("");
-	article.setPicUrl(CommonUtil.PROJECT_ROOT+"top.jpg");
+	article.setPicUrl(ConfigUtil.PROJECT_ROOT+"/images/weather/"+getWeatherPic(weatherData.getDayPictureUrl()));
 	article.setUrl("http://www.wls96121.com/");
 	articleList.add(article);
 	
@@ -87,7 +87,7 @@ public class WeatherUtil {
 		article.setTitle(data.getDate()+" "+data.getTemperature()+" "
 				+data.getWeather()+" "+data.getWind());
 		article.setDescription("");
-		article.setPicUrl(CommonUtil.PROJECT_ROOT+getWeatherPic(data.getDayPictureUrl()));
+		article.setPicUrl(ConfigUtil.PROJECT_ROOT+"/images/weather/"+getWeatherPic(data.getDayPictureUrl()));
 		article.setUrl("http://www.wls96121.com/");
 		articleList.add(article);
 	}
