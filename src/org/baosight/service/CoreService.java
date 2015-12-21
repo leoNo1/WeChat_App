@@ -135,9 +135,9 @@ public class CoreService {
 					String eventKey = requestMap.get("EventKey");
 
 					if (eventKey.equals("11")) {
-						String respContent = "天气预报菜单项被点击！";
+						
 					} else if (eventKey.equals("12")) {
-						String respContent = "公交查询菜单项被点击！";
+						
 					} else if (eventKey.equals("13")) {
 						NewsMessage newsMessage = new NewsMessage();
 						newsMessage.setToUserName(fromUserName);
@@ -153,28 +153,22 @@ public class CoreService {
 						
 						
 											
-					} else if (eventKey.equals("14")) {
-						String respContent = "历史上的今天菜单项被点击！";
-					} else if (eventKey.equals("21")) {
+					}else if (eventKey.equals("21")) {
 
 						String respContent = WeChatUtil.getUsage();
 
 						textMessage.setContent(respContent);
 						respXML = MessageUtil.textMessageToXml(textMessage);
 					} else if (eventKey.equals("22")) {
-						String respContent = "经典游戏菜单项被点击！";
+					
 					} else if (eventKey.equals("23")) {
-						String respContent = "美女电台菜单项被点击！";
-					} else if (eventKey.equals("24")) {
-						String respContent = "人脸识别菜单项被点击！";
-					} else if (eventKey.equals("25")) {
-						String respContent = "聊天唠嗑菜单项被点击！";
+						
 					} else if (eventKey.equals("31")) {
-						String respContent = "Q友圈菜单项被点击！";
+						
 					} else if (eventKey.equals("32")) {
-						String respContent = "电影排行榜菜单项被点击！";
+						
 					} else if (eventKey.equals("33")) {
-						String respContent = "幽默笑话菜单项被点击！";
+						
 					}
 				}
 			}
